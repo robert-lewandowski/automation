@@ -293,7 +293,14 @@ def prepare_email():
 
 today_matches_html = provide_html_today(df_today)
 last_matches_html = provide_html_last(prev_round)
-content = prepare_email()
 update_plots()
-prepare_email()
-send_email()
+content = prepare_email()
+
+if len(df_today) > 0:
+  today_matches_html = provide_html_today(df_today)
+  last_matches_html = provide_html_last(prev_round)
+  update_plots()
+  content = prepare_email()
+  send_email()
+else:
+  pass
